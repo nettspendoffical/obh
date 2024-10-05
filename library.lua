@@ -3339,6 +3339,7 @@ end
 	end;
 
 end;
+
 -- Local Variables
 local Flags = Library.Flags
 local Pointers = Library.Pointers
@@ -3347,3 +3348,5 @@ local Utility = Library.Utility
 getfenv(0)["Library"] = Library;
 getfenv(0)["Flags"] = Flags;
 getfenv(0)["Pointers"] = Pointers;
+
+return Library;
