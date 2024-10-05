@@ -66,12 +66,12 @@ do
 			[Enum.UserInputType.MouseButton3] = "m3"
 		};
 		Connections = {};
-		FontSize = 12;
+		FontSize = 9;
 		KeyList = nil;
 		UIKey = Enum.KeyCode.End;
 		ScreenGUI = nil;
 		CurrentColor = nil;
-		FSize = 13;
+		FSize = 9;
 		Notifs = {};
 	}
 
