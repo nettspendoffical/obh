@@ -66,12 +66,12 @@ do
 			[Enum.UserInputType.MouseButton3] = "m3"
 		};
 		Connections = {};
-		FontSize = 9;
+		FontSize = 12;
 		KeyList = nil;
 		UIKey = Enum.KeyCode.End;
 		ScreenGUI = nil;
 		CurrentColor = nil;
-		FSize = 9;
+		FSize = 13;
 		Notifs = {};
 	}
 
@@ -3339,14 +3339,4 @@ end
 	end;
 
 end;
-
--- Local Variables
-local Flags = Library.Flags
-local Pointers = Library.Pointers
-local Utility = Library.Utility
-
-getfenv(0)["Library"] = Library;
-getfenv(0)["Flags"] = Flags;
-getfenv(0)["Pointers"] = Pointers;
-
 return Library;
