@@ -4,9 +4,6 @@ if isfile("dmtmenu.font") then
 	delfile("dmtmenu.font")
 end
 
-writefile("ProggyTiny.ttf", game:HttpGet("https://github.com/ocornut/imgui/raw/refs/heads/master/misc/fonts/ProggyTiny.ttf")) -- old https://github.com/f1nobe7650/other/raw/main/ProggyClean.ttf
-
-
 local Library = {};
 do
 	Library = {
@@ -92,41 +89,41 @@ do
 	local Mouse = LocalPlayer:GetMouse();
 	local TweenService = game:GetService("TweenService");
 	
--- // Custom Font
-do
-	getsynasset = getcustomasset or getsynasset
-	Font = setreadonly(Font, false);
-	function Font:Register(Name, Weight, Style, Asset)
-		if not isfile(Name .. ".font") then
-			if not isfile(Asset.Id) then
-				writefile(Asset.Id, Asset.Font);
+	-- // Custom Font
+	do
+        getsynasset = getcustomasset or getsynasset
+		Font = setreadonly(Font, false);
+		function Font:Register(Name, Weight, Style, Asset)
+			if not isfile(Name .. ".font") then
+				if not isfile(Asset.Id) then
+					writefile(Asset.Id, Asset.Font);
+				end;
+				--
+				local Data = {
+					name = Name,
+					faces = {{
+						name = "Regular",
+						weight = Weight,
+						style = Style,
+						assetId = getsynasset(Asset.Id);
+					}}
+				};
+				--
+				writefile(Name .. ".font", game:GetService("HttpService"):JSONEncode(Data));
+				return getsynasset(Name .. ".font");
+			else 
+				warn("Font already registered");
 			end;
-			--
-			local Data = {
-				name = Name,
-				faces = {{
-					name = "Regular",
-					weight = Weight,
-					style = Style,
-					assetId = getsynasset(Asset.Id);
-				}}
-			};
-			--
-			writefile(Name .. ".font", game:GetService("HttpService"):JSONEncode(Data));
-			return getsynasset(Name .. ".font");
-		else 
-			warn("Font already registered");
 		end;
-	end;
-	--
-	function Font:GetRegistry(Name)
-		if isfile(Name .. ".font") then
-			return getsynasset(Name .. ".font");
+		--
+		function Font:GetRegistry(Name)
+			if isfile(Name .. ".font") then
+				return getsynasset(Name .. ".font");
+			end;
 		end;
-	end;
 
-	Font:Register("dmtmenu", 400, "normal", {Id = "ProggyTiny.ttf", Font = ""});
-end
+		Font:Register("dmtmenu", 400, "normal", {Id = "dmt_font.ttf", Font = ""});
+	end
 	
 	-- // Misc Functions
 	do
@@ -3342,3 +3339,4 @@ end
 	end;
 
 end;
+
